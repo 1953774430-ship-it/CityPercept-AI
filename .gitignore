@@ -1,0 +1,10 @@
+.demo_venv/
+.real_auth_test/
+__pycache__/
+*.pyc
+*.log
+.streamlit/secrets.toml
+
+llm标注结果/.env
+llm标注结果/runs/
+llm标注结果/runs_envfile_test/

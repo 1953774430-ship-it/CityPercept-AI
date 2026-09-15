@@ -1,0 +1,183 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "image_overview": {
+      "type": "string",
+      "description": "客观概述街景整体场景。"
+    },
+    "evaluations": {
+      "type": "array",
+      "description": "11 项评价指标的逐项评分结果。",
+      "minItems": 11,
+      "maxItems": 11,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "dimension": {
+            "type": "string",
+            "enum": [
+              "X8 历史立面显现度",
+              "X9 商业界面开放度",
+              "X10 风貌协调度",
+              "M1 空间开敞感",
+              "M2 步行友好感",
+              "M3 景观舒适感",
+              "M4 历史风貌感",
+              "M5 商业活力感",
+              "Y1 综合空间感知评价",
+              "Y2 停留意愿",
+              "Y3 情绪愉悦度"
+            ]
+          },
+          "score": {
+            "type": "string",
+            "enum": [
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "NA"
+            ]
+          },
+          "visual_evidence": {
+            "type": "string",
+            "description": "直接来自图片的视觉证据。"
+          },
+          "reasoning": {
+            "type": "string",
+            "description": "基于定义和锚点的评分理由。"
+          }
+        },
+        "required": [
+          "dimension",
+          "score",
+          "visual_evidence",
+          "reasoning"
+        ]
+      }
+    },
+    "score_summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "valid_count": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 11
+        },
+        "mean_score": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 5,
+          "description": "所有非 NA 分值的算术平均值，保留两位小数。"
+        },
+        "highest": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "dimension": {
+              "type": "string",
+              "enum": [
+                "X8 历史立面显现度",
+                "X9 商业界面开放度",
+                "X10 风貌协调度",
+                "M1 空间开敞感",
+                "M2 步行友好感",
+                "M3 景观舒适感",
+                "M4 历史风貌感",
+                "M5 商业活力感",
+                "Y1 综合空间感知评价",
+                "Y2 停留意愿",
+                "Y3 情绪愉悦度"
+              ]
+            },
+            "score": {
+              "type": "string",
+              "enum": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5"
+              ]
+            }
+          },
+          "required": [
+            "dimension",
+            "score"
+          ]
+        },
+        "lowest": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "dimension": {
+              "type": "string",
+              "enum": [
+                "X8 历史立面显现度",
+                "X9 商业界面开放度",
+                "X10 风貌协调度",
+                "M1 空间开敞感",
+                "M2 步行友好感",
+                "M3 景观舒适感",
+                "M4 历史风貌感",
+                "M5 商业活力感",
+                "Y1 综合空间感知评价",
+                "Y2 停留意愿",
+                "Y3 情绪愉悦度"
+              ]
+            },
+            "score": {
+              "type": "string",
+              "enum": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5"
+              ]
+            }
+          },
+          "required": [
+            "dimension",
+            "score"
+          ]
+        },
+        "na_dimensions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "X8 历史立面显现度",
+              "X9 商业界面开放度",
+              "X10 风貌协调度",
+              "M1 空间开敞感",
+              "M2 步行友好感",
+              "M3 景观舒适感",
+              "M4 历史风貌感",
+              "M5 商业活力感",
+              "Y1 综合空间感知评价",
+              "Y2 停留意愿",
+              "Y3 情绪愉悦度"
+            ]
+          }
+        }
+      },
+      "required": [
+        "valid_count",
+        "mean_score",
+        "highest",
+        "lowest",
+        "na_dimensions"
+      ]
+    }
+  },
+  "required": [
+    "image_overview",
+    "evaluations",
+    "score_summary"
+  ]
+}
